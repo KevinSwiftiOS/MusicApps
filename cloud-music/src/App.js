@@ -5,6 +5,7 @@ function App() {
     <div className="App">
       <GlobalStyle></GlobalStyle>
       <IconStyle></IconStyle>
+      {123 + 456}
       <i className="iconfont">&#xe62b;</i>
     </div>
   );
