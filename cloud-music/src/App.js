@@ -9,14 +9,12 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-
       <HashRouter>
         <GlobalStyle></GlobalStyle>
         <IconStyle></IconStyle>
         { renderRoutes(routes) }
       </HashRouter>
     </Provider>
-
   );
 }
 
