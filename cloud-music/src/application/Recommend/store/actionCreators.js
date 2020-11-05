@@ -26,8 +26,17 @@ export const getRecommendList = () => {
   return (dispatch) => {
     getRecommendListRequest().then(data => {
       dispatch(changeRecommendList(data.result));
+      dispatch(changeEnterLoading(false));
     }).catch(() => {
       console.log('推荐列表传输错误');
     })
   }
 }
+
+export const changeEnterLoading = (data) => {
+  console.log(3);
+  return ({
+  type:actionTypes.CHANGE_ENTER_LOADING,
+  data
+})
+};
