@@ -12,7 +12,7 @@ function App() {
       <HashRouter>
         <GlobalStyle></GlobalStyle>
         <IconStyle></IconStyle>
-        { renderRoutes(routes) }
+        {renderRoutes(routes)}
       </HashRouter>
     </Provider>
   );
