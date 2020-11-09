@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import Horizen from '../../baseUI/horizen-item';
 import Scroll from '../../baseUI/scroll';
 import { alphaTypes, categoryTypes } from '../../api/config';
@@ -21,25 +21,26 @@ import {
 } from './store/actionCreators';
 import Loading from '../../baseUI/loading';
 import LazyLoad, { forceCheck } from 'react-lazyload';
+import { CategoryDataContext, CHANGE_ALPHA, CHANGE_CATEGORY } from './data';
 
 function Singers(props) {
-  let [category, setCategory] = useState('');
   const { singerList, pageCount, enterLoading, pullUpLoading, pullDownLoading } = props;
   const { updateDispatch, getHotSingerDispatch, pullUpRefreshDispatch, pullDownRefreshDispatch } = props;
-  let [alpha, setAlpha] = useState('');
 
+  const {data, dispatch} = useContext(CategoryDataContext);
+  const {category, alpha} = data.toJS();
   const singerListTOJS = singerList ? singerList.toJS() : [];
 
   useEffect(() => {
     getHotSingerDispatch();
   }, []);
   let handleUpdateAlpha = (val) => {
-    setAlpha(val);
+    dispatch({type: CHANGE_ALPHA, data:val});
     updateDispatch(category, val);
   }
 
   let handleUpdateCateogry = (val) => {
-    setCategory(val);
+    dispatch({type: CHANGE_CATEGORY, data:val});
     updateDispatch(val, alpha);
   }
 
