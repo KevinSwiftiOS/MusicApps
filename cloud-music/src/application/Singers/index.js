@@ -1,4 +1,4 @@
-import React, {  useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Horizen from '../../baseUI/horizen-item';
 import Scroll from '../../baseUI/scroll';
 import { alphaTypes, categoryTypes } from '../../api/config';
@@ -27,20 +27,20 @@ function Singers(props) {
   const { singerList, pageCount, enterLoading, pullUpLoading, pullDownLoading } = props;
   const { updateDispatch, getHotSingerDispatch, pullUpRefreshDispatch, pullDownRefreshDispatch } = props;
 
-  const {data, dispatch} = useContext(CategoryDataContext);
-  const {category, alpha} = data.toJS();
+  const { data, dispatch } = useContext(CategoryDataContext);
+  const { category, alpha } = data.toJS();
   const singerListTOJS = singerList ? singerList.toJS() : [];
-
+  
   useEffect(() => {
     getHotSingerDispatch();
   }, []);
   let handleUpdateAlpha = (val) => {
-    dispatch({type: CHANGE_ALPHA, data:val});
+    dispatch({ type: CHANGE_ALPHA, data: val });
     updateDispatch(category, val);
   }
 
   let handleUpdateCateogry = (val) => {
-    dispatch({type: CHANGE_CATEGORY, data:val});
+    dispatch({ type: CHANGE_CATEGORY, data: val });
     updateDispatch(val, alpha);
   }
 

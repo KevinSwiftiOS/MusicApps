@@ -50,5 +50,12 @@
   },
   "devDependencies": {
     "eslint": "^7.12.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "node script/verify-commit.js",
+      "pre-push": "npm test"
+    }
   }
 }
