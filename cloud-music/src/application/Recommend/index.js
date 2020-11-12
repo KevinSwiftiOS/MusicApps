@@ -7,12 +7,12 @@ import { connect } from "react-redux";
 import * as actionTypes from './store/actionCreators';
 import Loading from '../../baseUI/loading/index';
 import { forceCheck } from 'react-lazyload';
+import { renderRoutes } from 'react-router-config';
 function Recommend(props) {
   const { bannerList, recommendList,enterLoading } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   
   useEffect(() => {
-    console.log(bannerList);
     if(!bannerList.size) {
       getBannerDataDispatch();
     }
@@ -34,6 +34,7 @@ function Recommend(props) {
         </div>
       </Scroll>
      {enterLoading ?  <Loading></Loading> : null }
+     { renderRoutes(props.route.routes) }
     </Content>
   )
 }

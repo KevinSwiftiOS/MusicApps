@@ -12,6 +12,8 @@ axiosInstance.interceptors.response.use(
     console.log(err, '网络错误');
   }
 )
+//顶部的高度
+export const HEADER_HEIGHT = 45;
 
 const categoryTypes = [{
   name: "华语男",
